@@ -9,79 +9,100 @@
 // con difficoltà 2 => tra 1 e 81
 // con difficoltà 3 => tra 1 e 49
 
-const grid = document.getElementById('grid');
 
 
-let totalCells = columns * rows;
+
+let columns;
+let rows;
+let choice;
 
 const extractedNumbers = [];
 
+do {
+    choice = parseInt(prompt('Choose difficulty between 1 and 3'))
+} while (choice < 1 || choice > 3 || isNaN(choice));
+
+switch (choice) {
+    case 1:
+        rows = 10;
+        columns = 10;
+        break;
+    case 2:
+        rows = 9;
+        columns = 9;
+        break;
+    case 3:
+        rows = 7;
+        columns = 7;
+        break;
+    default:
+        rows = 10;
+        columns = 10;
+
+}
+
+let totalCells = rows * columns;
+
+for (let i = 1; i <= totalCells; i++) {
+    const cell = createCell(choice);
+    const grid = document.getElementById('grid');
 
 
+    cell.innerText = i;
+    cell.id = i;
 
-for (let i = 0; i < totalCells; i++){
-    const cell = createCell();
-    const random = generateUniqueRandomNumber(1, totalCells, extractedNumbers)
-    extractedNumbers.push(random);
-
-    cell.innerText = random;
-    cell.id = random;
-
-    cell.addEventListener('click', function(){
+    cell.addEventListener('click', function () {
         cell.classList.toggle('bg-skyblue');
     });
-
-    grid.appendChild(cell);
     
+    grid.appendChild(cell);
+
 }
 
 
-function generateUniqueRandomNumber(min, max, record) {
-    let number = generateRandomNumber(min, max);
-
-    while (record.includes(number)) {
-        number = generateRandomNumber(min, max)
-    }
-    return number;
-}
-
-
-
-function generateRandomNumber(min, max) {
-    const range = (max - min) + 1;
-    const numeroRandom = Math.floor(Math.random() * range + min);
-    return numeroRandom;
-}
-
-function createCell() {
+function createCell(choice) {
     const item = document.createElement('div');
-    item.classList.add('cell');
+    item.classList.add('cell-100');
+
+    if (choice === '1'){
+        item.classList.add('cell-100');
+    } else if (choice === '2') {
+        item.classList.add('cell-81');
+    } else if (choice === '3'){
+        item.classList.add('cell-49');
+    }
+
+    
     return item;
 }
 
-function difficultyChoice() {
-    const choice = parseInt(prompt('Inserisci difficoltà, da 1 a 3: '));
-    while (isNaN(choice) && (choice < 1 || choice > 3)){
-        choice = parseInt(prompt('Inserisci difficoltà, da 1 a 3: '));
-    }
 
-    if (choice === '1') {
-        let totalCells = 0;
-        let columns = 10;
-        let rows = 10;
-        totalCells = columns * rows; 
-    } else if (choice === '2') {
-        let totalCells = 0;
-        let columns = 8;
-        let rows = 8;
-        totalCells = (columns * rows) + 1; 
-    } else {
-        let totalCells = 0;
-        let columns = 5;
-        let rows = 5;
-        totalCells = (columns * rows) - 1; 
-    }
-}
+
+
+
+// function difficultyChoice() {
+//     const choice = parseInt(prompt('Inserisci difficoltà, da 1 a 3: '));
+//     while (isNaN(choice) && (choice < 1 || choice > 3)){
+//         choice = parseInt(prompt('Inserisci difficoltà, da 1 a 3: '));
+//     }
+
+//     if (choice === '1') {
+//         let totalCells = 0;
+//         let columns = 10;
+//         let rows = 10;
+//         totalCells = columns * rows; 
+//     } else if (choice === '2') {
+//         let totalCells = 0;
+//         let columns = 8;
+//         let rows = 8;
+//         totalCells = (columns * rows) + 1; 
+//     } else {
+//         let totalCells = 0;
+//         let columns = 5;
+//         let rows = 5;
+//         totalCells = (columns * rows) - 1; 
+//     }
+// }
 
 
 
