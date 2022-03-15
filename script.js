@@ -12,13 +12,12 @@ const totalCells = columns * rows;
 
 const extractedNumbers = [];
 
-for (let i = 0; i < totalCells; i++){
+for (let i = 1; i <= totalCells; i++){
     const cell = createCell();
-    const random = generateUniqueRandomNumber(1, totalCells, extractedNumbers)
-    extractedNumbers.push(random);
+    
 
-    cell.innerText = random;
-    cell.id = random;
+    cell.innerText = i;
+    cell.id = i;
 
     cell.addEventListener('click', function(){
         cell.classList.toggle('bg-skyblue');
@@ -28,23 +27,6 @@ for (let i = 0; i < totalCells; i++){
     
 }
 
-
-function generateUniqueRandomNumber(min, max, record) {
-    let number = generateRandomNumber(min, max);
-
-    while (record.includes(number)) {
-        number = generateRandomNumber(min, max)
-    }
-    return number;
-}
-
-
-
-function generateRandomNumber(min, max) {
-    const range = (max - min) + 1;
-    const numeroRandom = Math.floor(Math.random() * range + min);
-    return numeroRandom;
-}
 
 function createCell() {
     const item = document.createElement('div');
