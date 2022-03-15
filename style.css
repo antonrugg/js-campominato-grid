@@ -8,3 +8,25 @@ body{
     font-family: 'Montserrat', sans-serif;
     background-color: lightgray;
 }
+
+#grid{
+    width: 700px;
+    height: 700px;
+    margin: 10px auto;
+    background-color: green;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.cell{
+    width: calc(100% / 10);
+    height: calc(100% / 10);
+    border: 2px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cell.bg-skyblue{
+    background-color: skyblue;
+}
