@@ -18,7 +18,7 @@ body{
     flex-wrap: wrap;
 }
 
-.cell-100{
+.cell{
     width: calc(100% / 10);
     height: calc(100% / 10);
     border: 2px solid black;
@@ -27,26 +27,9 @@ body{
     align-items: center;
 }
 
-.cell-81{
-    width: calc(100% / 8);
-    height: calc(100% / 8);
-    border: 2px solid black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.cell-49{
-    width: calc(100% / 5);
-    height: calc(100% / 5);
-    border: 2px solid black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
 
 
-.cell-100.bg-skyblue{
+.cell.bg-skyblue{
     background-color: skyblue;
 }

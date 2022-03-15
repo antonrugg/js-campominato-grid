@@ -16,11 +16,9 @@ let columns;
 let rows;
 let choice;
 
-const extractedNumbers = [];
-
 do {
     choice = parseInt(prompt('Choose difficulty between 1 and 3'))
-} while (choice < 1 || choice > 3 || isNaN(choice));
+} while ((choice < 1 || choice > 3) || isNaN(choice));
 
 switch (choice) {
     case 1:
@@ -51,7 +49,7 @@ for (let i = 1; i <= totalCells; i++) {
     cell.innerText = i;
     cell.id = i;
 
-    cell.addEventListener('click', function () {
+    cell.addEventListener('click', () => {
         cell.classList.toggle('bg-skyblue');
     });
     
@@ -60,19 +58,9 @@ for (let i = 1; i <= totalCells; i++) {
 }
 
 
-function createCell(choice) {
+function createCell() {
     const item = document.createElement('div');
-    item.classList.add('cell-100');
-
-    if (choice === '1'){
-        item.classList.add('cell-100');
-    } else if (choice === '2') {
-        item.classList.add('cell-81');
-    } else if (choice === '3'){
-        item.classList.add('cell-49');
-    }
-
-    
+    item.classList.add('cell');
     return item;
 }
 
@@ -80,29 +68,6 @@ function createCell(choice) {
 
 
 
-// function difficultyChoice() {
-//     const choice = parseInt(prompt('Inserisci difficoltà, da 1 a 3: '));
-//     while (isNaN(choice) && (choice < 1 || choice > 3)){
-//         choice = parseInt(prompt('Inserisci difficoltà, da 1 a 3: '));
-//     }
-
-//     if (choice === '1') {
-//         let totalCells = 0;
-//         let columns = 10;
-//         let rows = 10;
-//         totalCells = columns * rows; 
-//     } else if (choice === '2') {
-//         let totalCells = 0;
-//         let columns = 8;
-//         let rows = 8;
-//         totalCells = (columns * rows) + 1; 
-//     } else {
-//         let totalCells = 0;
-//         let columns = 5;
-//         let rows = 5;
-//         totalCells = (columns * rows) - 1; 
-//     }
-// }
 
 
 
