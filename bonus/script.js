@@ -54,7 +54,6 @@ for (let i = 1; i <= totalCells; i++) {
 
     
     grid.appendChild(cell);
-
 }
 
 
